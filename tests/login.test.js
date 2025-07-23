@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
+const login = JSON.parse(open('../fixtures/login.json'))
 
 export const options = {
   // Define the number of iterations for the test
@@ -19,10 +20,8 @@ export const options = {
 
 export default function () {
   const url = 'http://localhost:3000/login';
-  const body = JSON.stringify({
-    username: 'julio.lima',
-    senha: '123456',
-  });
+  const body = JSON.stringify(login);
+  
 
   const params = {
     headers: {
