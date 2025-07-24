@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 const login = JSON.parse(open('../fixtures/login.json'))
+import { pegarBaseURL } from '../utils/variavel.js';
 
 export const options = {
   // Define the number of iterations for the test
@@ -19,7 +20,7 @@ export const options = {
 };
 
 export default function () {
-  const url = 'http://localhost:3000/login';
+  const url = pegarBaseURL() + '/login';
   const body = JSON.stringify(login);
   
 

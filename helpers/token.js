@@ -1,8 +1,9 @@
 const login = JSON.parse(open('../fixtures/login.json'))
 import http from 'k6/http'
+import { pegarBaseURL } from '../utils/variavel.js';
 
 export function obterToken () {
-    const url = 'http://localhost:3000/login';
+    const url = pegarBaseURL() + '/login';
     const body = JSON.stringify(login);
       
     

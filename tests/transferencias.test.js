@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { obterToken } from '../helpers/token.js'
+import { pegarBaseURL } from '../utils/variavel.js';
 
 export const options = {
   iterations: 1
@@ -23,8 +24,8 @@ export default function() {
     },
   };
 
-  let response = http.post('http://localhost:3000/transferencias',body,params);
+  let response = http.post(pegarBaseURL() + '/transferencias',body,params);
   check(response, { "status is 201": (res) => res.status === 201 });
-  
+
   sleep(1);
 }
